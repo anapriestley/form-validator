@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Form validation problem</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
+</head>
+
+<body>
+    <form method="post" action=" ">
+        <h1>Fill out this awesome form</h1>
+        <fieldset>
+            <h3>Your details</h3>
+            <p>
+                <label class="label" for="email">
+                    Email
+                </label>
+                <input class="form-control" type="email" data-validation="email" data-validation-error-msg="Enter a valid e-mail" required >
+            </p>
+            <p>
+                <label class="label" for="password">
+                    Password
+                </label>
+                <input class="form-control" name="password" data-validation="length alphanumeric" data-validation-length="min9" data-validation-error-msg="Password must be at least 9 characters" required >
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <h3>Your animal</h3>
+            <p>
+                <label class="label" for="colour">
+                    Colour
+                </label>
+                <select class="form-control" name="colour" id="colour" data-validation="required" data-validation-error-msg="Pick a colour" required >
+                    <option value="">Choose colour</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="red">Red</option>
+                    <option value="black">Black</option>
+                    <option value="brown">Brown</option>
+                </select>
+            </p>
+            
+                <span class="label">
+                    Animal
+                </span>
+				<p>
+                <input type="checkbox" name="animal" data-validation="checkbox_group" data-validation-qty="min2" value="bear" id="bear" data-validation-error-msg="Please choose at least 2 animals" >
+                <label for="bear">
+                     Bear
+                </label>
+
+                <input type="checkbox" name="animal tiger" value="1" id="tiger">
+                <label for="tiger">
+                    Tiger
+                </label>
+
+                <input type="checkbox" name="animal" value="snake" id="snake">
+                <label for="snake">
+                     Snake
+                </label>
+
+                <input type="checkbox" name="animal" value="donkey" id="donkey">
+                <label for="donkey">
+                     Donkey
+                </label>
+
+            </p>
+            <p>
+                <label class="label" for="tiger_type">
+                    Type of tiger
+                </label>
+                <input class="form-control" type="text" name="tiger_type" id="tiger_type" data-validation="required" 
+                data-validation-error-msg="Select type of tiger"
+		 		data-validation-depends-on="animal tiger">
+                
+            </p>
+        </fieldset>
+        <fieldset>
+            <p>
+                <input type="submit" value="Create account">
+            </p>
+        </fieldset>
+    </form>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+  $.validate({
+    modules : 'html5, logic'
+  });
+</script>
+</body>
+</html>
